@@ -1,174 +1,174 @@
-# 🚀 URL Shortener — Full Stack MERN Application
+# ⭐ URL Shortener – MERN Stack Application
 
+A full-stack **URL Shortening Application** with **User Authentication**, **Custom Short URLs**, and a clean modern UI.  
+Built using **React, Redux Toolkit, Tailwind CSS, Node.js, Express & MongoDB**.
 
-A full-featured URL shortener application with user authentication, analytics, and custom short URLs, built using:
+---
 
-Frontend: React + Redux Toolkit + Tailwind
+## 🌐 Live Demo  
+🚀 *Coming Soon…*
 
-Backend: Node.js + Express + MongoDB
+---
 
-Authentication: JWT-based login/signup
+## 📌 Features
 
-Deployment Ready: Clean folder structure for easy deployment
+### 🔗 URL Shortening
+- Shorten long URLs instantly  
+- Auto-generated short IDs  
+- One-click copy  
+- Custom slugs (coming soon)
 
-📌 Features
-🔗 URL Shortening
+### 👤 User Features
+- JWT-based Register & Login  
+- Logged-in users can manage their links  
+- Guest users can shorten URLs  
+- Dashboard for managing links  
 
-Convert long URLs into short, shareable links
+### 📊 URL Analytics (Coming Soon)
+- Click tracking  
+- Browser/device analytics  
+- Country-based stats  
 
-Custom short URL slugs
+---
 
-Automatic slug generator
+## 🧰 Tech Stack
 
-Copy-to-clipboard support
+### **Frontend**
+- React (Vite)
+- Redux Toolkit
+- React Router
+- Tailwind CSS
+- Axios
 
-👤 User Management
+### **Backend**
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- JWT Authentication
+- Bcrypt Password Hashing
 
-User registration & login
+---
 
-JWT authentication
+## 📁 Folder Structure
 
-Logged-in users can view all their shortened URLs
-
-Guest users can also shorten URLs (optional)
-
-📊 Analytics (Upcoming)
-
-Click tracking
-
-Location / browser analytics
-
+```
 url_shortner/
- ├── BACKEND/        → Node/Express API
- └── FRONTEND/       → React App
- 
-🏗️ Folder Structure
-Frontend
+│
+├── FRONTEND/
+│   ├── src/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── routing/
+│   │   ├── utils/
+│   │   ├── store/
+│   │   └── features/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+└── BACKEND/
+    ├── controllers/
+    ├── models/
+    ├── routes/
+    ├── middleware/
+    ├── config/
+    ├── utils/
+    ├── server.js
+    └── package.json
+```
 
-FRONTEND/
- ├── src/
- │    ├── api/          → API calls (axios)
- │    ├── components/   → Reusable UI components
- │    ├── pages/        → Pages (Home, Login, Signup, Dashboard)
- │    ├── routing/      → Protected Routes
- │    ├── utils/        → Helpers
- │    ├── store/        → Redux Toolkit store
- │    └── features/     → Redux slices
- ├── App.jsx
- ├── main.jsx
- └── index.css
+---
 
-Backend
-BACKEND/
- ├── controllers/
- ├── models/
- ├── routes/
- ├── middleware/
- ├── utils/
- ├── config/
- ├── server.js
- └── package.json
+## ⚙️ Installation & Setup
 
-🛠️ Tech Stack
-Frontend
-
-React (Vite)
-
-Redux Toolkit
-
-React Router
-
-Tailwind CSS
-
-Axios
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB with Mongoose
-
-JWT Authentication
-
-Bcrypt Password Hashing
-
-⚙️ Installation & Setup
-1️⃣ Clone the Repository
-
+### 1️⃣ Clone the Repository
+```bash
 git clone https://github.com/anurag-verma/url_shortner.git
 cd url_shortner
+```
 
-🖥️ Frontend Setup
+---
+
+## 🚀 Frontend Setup
+```bash
 cd FRONTEND
 npm install
 npm run dev
+```
 
-🛠 Backend Setup
+Frontend runs on →  
+👉 http://localhost:5173
+
+---
+
+## 🛠 Backend Setup
+```bash
 cd BACKEND
 npm install
 npm run dev
+```
 
-Create .env file in BACKEND with:
+Backend runs on →  
+👉 http://localhost:3000
+
+### Create `.env` inside BACKEND:
+```
 PORT=3000
-MONGO_URI=your_mongodb_url
+MONGO_URI=your_mongo_connection
 JWT_SECRET=your_secret_key
 APP_URL=http://localhost:5173/
+```
 
-🚀 Usage
-🔹 Shorten a URL
+---
 
-Enter a long URL → click Shorten → get a quick shareable link.
+## 🔥 API Endpoints
 
-🔹 User Login/Signup
+### Auth Routes
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/signup` | Register user |
+| POST | `/api/auth/login` | Login user |
 
-Login to track your own URLs
+### URL Routes
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/url/shorten` | Create short URL |
+| GET | `/:shortId` | Redirect to original |
 
-Redirect to dashboard
+---
 
-🔹 Dashboard (Logged-in Users)
+## 🖼️ Screenshots (Add Your Images)
 
-View all shortened URLs
+Example:
+```
+![Home Page](./screenshots/home.png)
+![Dashboard](./screenshots/dashboard.png)
+```
 
-Copy / delete links
+---
 
-Analytics coming soon
+## 🧩 Upcoming Features
+- QR code generation  
+- Full analytics dashboard  
+- Admin panel  
+- Custom domains  
 
-📜 API Endpoints (Backend)
-🔐 Auth
-Method	Endpoint	Description
-POST	/api/auth/signup	Create new user
-POST	/api/auth/login	Login & get token
-🔗 URLs
-Method	Endpoint	Description
-POST	/api/url/shorten	Create short URL
-GET	/:shortId	Redirect to original URL
-🧩 Upcoming Features
+---
 
-URL analytics dashboard
+## 🤝 Contributing
 
-QR code generator
+Contributions are welcome!  
+Feel free to open an **Issue** or **Pull Request**.
 
-Custom domain support
+---
 
-Role-based admin management
+## 📄 License
 
-🤝 Contributing
+Licensed under the **Unlicense** — free to use & modify.
 
-Pull requests are welcome!
-For major changes, please open an issue first.
+---
 
-📄 License
+## ⭐ Support
 
-This project is licensed under the Unlicense — free for personal & commercial use.
-
-If you want, I can also generate:
-
-✔ Badges (GitHub stars, last commit, license, tech stack)
-✔ Screenshots section
-✔ Setup video GIF
-✔ Contribution guidelines
-
-
-📁 Organized Full Stack Structure
+If you found this helpful, consider giving this repository a ⭐ on GitHub!
