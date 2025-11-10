@@ -4,6 +4,7 @@ dotenv.config('./.env');
 import dbConnect from './src/config/mongo.config.js';
 import shortUrlRoute from './src/routes/shortUrl.route.js';
 import authRoutes from './src/routes/auth.routes.js';
+import userRoutes from './src/routes/user.routes.js';
 import { redirectFromShortUrl } from './src/controller/shortUrl.controller.js';
 import errorHandler from './src/middleware/errorHandler.js';
 import cors from 'cors';
@@ -11,8 +12,20 @@ import { attachUser } from './src/utils/attachUser.js';
 import cookieParser from 'cookie-parser';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173', // Your frontend URL
+    credentials: true, // Allow credentials
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Explicitly allow methods
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
+    exposedHeaders: ['set-cookie']
+}));
 app.use(cookieParser());
+
+// Add this middleware to log cookies on every request
+app.use((req, res, next) => {
+    console.log('Received Cookies:', req.cookies);
+    next();
+});
 // Middleware to parse form data (application/x-www-form-urlencoded)
 app.use(express.urlencoded({ extended: true }));
 // Middleware to parse JSON body (application/json)
@@ -23,6 +36,7 @@ app.use(attachUser);
 
 app.use('/api/auth',authRoutes);
 app.use("/api/create",shortUrlRoute);
+app.use("/api/user",userRoutes);
 app.get("/:shortId", redirectFromShortUrl);
 
 app.listen(port,()=>{

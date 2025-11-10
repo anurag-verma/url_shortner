@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { createShortUrl } from "../api/shortUrl.api.js";
 
-export default function UrlShortenerForm({ onShorten }) {
+export default function UrlShortenerForm({ onShorten = null }) {
     const [url, setUrl] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 

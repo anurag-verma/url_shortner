@@ -32,8 +32,13 @@ console.log("Login Page--Auth Status: ",auth.isLoggedIn);
 
     try {
       const response = await loginUser(formData.email, formData.password);
-      dispatch(login(response.user));
-      navigate('/dashboard');
+        // If backend returned a token, store it. Many setups use cookies, so token may be undefined.
+        if (response.token) localStorage.setItem('token', response.token);
+        // Store user object (backend returns user) so checkAuth can find it
+        if (response.user) localStorage.setItem('user', JSON.stringify(response.user));
+        // Redirect to dashboard after successful login
+        dispatch(login(response.user));
+        navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to login. Please try again.');
     } finally {

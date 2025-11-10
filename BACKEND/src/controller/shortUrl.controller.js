@@ -6,10 +6,12 @@ export const createShortUrl = async(req, res, next)=>{
     try{
     const {url} = req.body;
     let short_url;
+    // console.log("request Data: ", req.user);
     if(req.user){
         console.log("Controller: creating loggedin user short url");
         short_url = await createUserShortUrlService(url,req.user._id);
     }else{
+        console.log("Controller: creating Guest user short url");
         short_url = await createShortUrlService(url);
     }
     res.status(200).json({shortUrl: process.env.APP_URL+short_url});

@@ -15,3 +15,8 @@ export const logoutUser = async () =>{
     const {data} = await axiosInstance.get("/auth/logout");
     return data;
 }
+
+export const getUserAllUrls = async () =>{
+    const {data} = await axiosInstance.post("/user/urls");
+    return data;
+}

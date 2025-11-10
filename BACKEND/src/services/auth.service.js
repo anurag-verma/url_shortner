@@ -9,7 +9,7 @@ export const registerUser = async (name, email, password) => {
     if (getUserData) throw new HttpError(409, 'User already exists with this email');
 
     const newUser = await createUser(name, email, password);
-    const token = jwtToken({ id: newUser._id });
+    const token = jwtToken(newUser._id);
 
     return token;
 }
@@ -21,6 +21,6 @@ export const loginUser = async (email, password) => {
     if (!user || user.password !== password) {
         throw new HttpError(401, 'Invalid email or password');
     }
-    const token = jwtToken({ id: user._id });
+    const token = jwtToken(user._id);
     return { token, user };
 };

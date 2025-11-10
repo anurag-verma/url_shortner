@@ -1,6 +1,9 @@
+
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../api/user.api';
+import { useDispatch } from 'react-redux';
+import { login } from '../store/slices/authSlice';
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -12,6 +15,7 @@ export default function SignupPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,10 +39,13 @@ export default function SignupPage() {
 
     try {
       const response = await registerUser(formData.name, formData.email, formData.password);
-      // Store the token
-      // localStorage.setItem('token', response.token);
-      // Redirect to home page
-      navigate('/');
+      // Store the token and user in localStorage if returned
+      if (response.token) localStorage.setItem('token', response.token);
+      if (response.user) localStorage.setItem('user', JSON.stringify(response.user));
+      // Dispatch login to Redux
+      if (response.user) dispatch(login(response.user));
+      // Redirect to dashboard
+      navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to create account. Please try again.');
     } finally {
